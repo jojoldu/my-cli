@@ -1,6 +1,7 @@
 # 나만의 CLI (Command Line Interface) 만들기
-마우스로 하는 반복적인 작업이 있을 경우 이를 크게 생각하지 않는 사람이 있고, 이 행동이 귀찮아서 어떻게든 간단하게 해결할 수 있는 방법을 찾는데 더 시간을 쓰는 사람이 있다
+마우스로 하는 반복적인 작업이 있을 경우 이를 크게 생각하지 않는 사람이 있고, 이 행동이 귀찮아서 어떻게든 간단하게 해결할 수 있는 방법을 찾는데 더 시간을 쓰는 사람이 있습니다.
 이 포스팅은 후자를 위한 이야기입니다.
+nodejs를 이용하여 나만의 CLI를 만들어 귀찮은 일들은 전부 스크립트에 맡기자는 주제로 진행할 예정입니다.
 
 ### 1. npm init
 ```
@@ -48,7 +49,7 @@ node ./app.js -u jojoldu -e jojoldu@gmail.com 3
 
 결과는!?
 
-![commander 결과](./images/commander결과.png) 
+![commander 결과](./images/commander결과.png)
 
 멋지게 커맨드라인 옵션이 적용된 것을 볼 수 있습니다. <br/>
 여기에 추가로 help 옵션의 경우 기본으로 추가됩니다.
@@ -64,3 +65,25 @@ node ./app.js -u jojoldu -e jojoldu@gmail.com 3
 npm install --save open
 ```
 
+npm으로 간단한게 설치후, app.js의 코드를 수정해보겠습니다. <br/>
+
+```
+var commander = require('commander');
+var open = require('open');
+
+commander
+    .arguments('<browser>')
+    .option('-u, --url <url>', 'Address of site you want to go to')
+    .action(function(browser){
+        open(commander.url, browser);
+    })
+    .parse(process.argv);
+```
+
+```open```패키지의 경우 인자값으로 1번째에 url을, 2번째에는 브라우저 이름을 사용하면 해당 브라우저을 실행시켜 지정된 url로 이동시켜주는 역할을 합니다. <br/>
+
+![open커맨드](./images/open커맨드.png)
+
+여기서 함정은 크롬의 경우 어플리케이션 이름이 chrome이 아니라 **Google chrome** 이라서 chrome로는 실행을 시키지 못하고 'Google chrome'로 해야만 합니다.
+
+![크롬버그](./images/크롬버그.png)

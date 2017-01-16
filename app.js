@@ -11,6 +11,12 @@ commander
     .arguments('<browser>')
     .option('-u, --url <url>', 'Address of site you want to go to')
     .action(function(browser){
-        open(commander.url, browser);
+        open(commander.url, browser, function (response) {
+            if(response instanceof Error){
+                console.log(response);
+            }
+        });
     })
     .parse(process.argv);
+
+
