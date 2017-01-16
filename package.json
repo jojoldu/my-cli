@@ -1,0 +1,21 @@
+{
+  "name": "my-cli",
+  "version": "1.0.0",
+  "description": "my command line interface tutorial",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "npm",
+    "nodejs",
+    "automation"
+  ],
+  "author": "jojoldu@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "open": "0.0.5"
+  }
+}
