@@ -2,10 +2,14 @@
   "name": "my-cli",
   "version": "1.0.0",
   "description": "my command line interface tutorial",
-  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "main": "lib/app.js",
+  "bin": {
+    "browser-open": "bin/browser.js"
+  },
+  "preferGlobal": true,
   "keywords": [
     "cli",
     "npm",
