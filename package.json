@@ -5,9 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main": "lib/app.js",
+  "main": "./lib/app.js",
   "bin": {
-    "browser-open": "bin/browser.js"
+    "browser": "bin/browser.js"
   },
   "preferGlobal": true,
   "keywords": [
